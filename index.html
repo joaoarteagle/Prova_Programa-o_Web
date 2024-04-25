@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>ESTADOS DO BRASIL</header>
+    <main>
+       <ul id="ul"></ul>
 
+    </main>
+    <footer>
+        © 2024 Prova de Programação Web
+    </footer>
+
+
+    <script type="text/javascript">
+        const main = document.getElementById("main");
+        const ul = document.getElementById("ul");
+        
+     
+    //  .then(data=>{
+    //      console.log(data.json())
+    //      return data.json();
+    //  }).then(item=>{
+    //     console.log(item)
+    //  })
+   async function consumindoAPI() {
+     try {
+      const data = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+  
+      const jsonData = await data.json()
+  
+
+      jsonData.forEach(element => {
+
+        const li = document.createElement("li");
+  
+
+
+        const a = document.createElement("a");
+        a.setAttribute("href", './municipios/index.html');
+
+
+        
+        a.textContent = element.nome;
+        li.appendChild(a);
+        ul.appendChild(li);
+
+        
+        
+      });
+      
+      //console.log(jsonData)
+    } catch (error) {
+      console.error(error)
+    }
+}
+consumindoAPI()
+
+     
+   
+     
+     // const estadosJson = await estados.json();
+
+
+       // main.innerHTML = ""
+       // main.textContent = JSON.stringify(estados);
+
+    </script>
+</body>
+</html>
