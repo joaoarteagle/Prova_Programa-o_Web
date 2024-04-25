@@ -48,15 +48,11 @@
         const a = document.createElement("a");
         a.setAttribute("href", `./municipios/index.html?UF=${element.sigla}`);
 
-        const botao = document.createElement("button");
-        botao.append("Favoritar");
-        botao.setAttribute("style", "color: #ff4136 ;")
-
 
         
         a.textContent = element.nome;
         li.appendChild(a);
-        li.appendChild(botao);
+      
         ul.appendChild(li);
 
         

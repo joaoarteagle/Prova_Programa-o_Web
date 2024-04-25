@@ -51,3 +51,11 @@ h1{
     font-size: 25px;
     color: white;
 }
+
+button{
+    background-color: #ff4136;
+    border: none;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+}
