@@ -22,7 +22,7 @@ footer{
 #ul{
     list-style:none; 
     display: flex; 
-    align-itens: center; 
+    align-items: center; 
     flex-direction: column; 
     gap: 10px;
 }
