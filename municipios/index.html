@@ -3,21 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Municipios</title>
 </head>
 <body>
     <header>
-        <h1>Municipios de </h1>
+        <h1 id="nome">Municipios de </h1>
+
+        <a href="../index.html">Ir para Home</a>
     </header>
 
-    <main>
-        <ul>
+    <main id="main">
+        <ul id="ul">
 
         </ul>
     </main>
 
     <footer>
-        
+        © 2024 Prova de Programação Web
     </footer>
+
+        
+    <script type="text/javascript">
+        const main = document.getElementById("main");
+        const ul = document.getElementById("ul");
+        const h1 = document.getElementById("nome");
+        
+     
+    //  .then(data=>{
+    //      console.log(data.json())
+    //      return data.json();
+    //  }).then(item=>{
+    //     console.log(item)
+    //  })
+   async function consumindoAPI(UF) {
+     try {
+      const data = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${UF}/municipios`)
+  
+      const jsonData = await data.json()
+  
+
+      jsonData.forEach(element => {
+
+        const li = document.createElement("li");
+  
+
+
+        const a = document.createElement("a");
+        a.setAttribute("href", `./municipios/index.html?nome=${element.nome}`);
+
+
+        
+        a.textContent = element.nome;
+        li.appendChild(a);
+        ul.appendChild(li);
+
+        
+        
+      });
+      
+      //console.log(jsonData)
+    } catch (error) {
+      console.error(error)
+    }
+}
+
+
+ async function getSearchParams() {
+    // Early return -> Caso location search, não faz nada.
+    if (!location.search) {
+      return
+    }
+  
+    // URLSearchParams é uma classe que facilita a manipulação de query strings
+    const urlSearchParams = new URLSearchParams(location.search)
+  
+    // Pegando o valor do parâmetro name
+    const UFEstado = urlSearchParams.get('UF')
+
+    try{
+      const data = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${UFEstado}`)
+      nome = await data.json();
+
+      //console.log(nome.nome)
+
+    }catch(error){
+      console.error(error);
+    }
+
+    h1.innerHTML += nome.nome
+    changePageTitle(`Municipios de ${nome.nome}`)
+    consumindoAPI(UFEstado)
+  }
+
+  function changePageTitle(title) {
+    document.title = title
+  }
+  
+getSearchParams();
+//consumindoAPI()
+
+     
+   
+     
+     // const estadosJson = await estados.json();
+
+
+       // main.innerHTML = ""
+       // main.textContent = JSON.stringify(estados);
+
+    </script>
+   
 </body>
 </html>

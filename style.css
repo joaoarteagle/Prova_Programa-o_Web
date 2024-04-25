@@ -1,18 +1,26 @@
+*{
+    margin: 0;
+}
 body{
     display: grid;
     grid-template-rows: auto;
 }
 
 header{
-
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color:  #0074d9;
 }
 
+header a{
+    color: white;
+    font-size: 15px;
+}
 footer{
-
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,9 +28,26 @@ footer{
 }
 
 #ul{
+    margin: 10px;
+    padding: 10px;
     list-style:none; 
     display: flex; 
     align-items: center; 
     flex-direction: column; 
-    gap: 10px;
+    gap: 15px;
+}
+a{
+    font-size: 20px;
+    text-decoration: none;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a:hover{
+    opacity: 0.8;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
 }

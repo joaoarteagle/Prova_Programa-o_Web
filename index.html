@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>ESTADOS DO BRASIL</header>
+    <header>
+      <h1>
+      Estados do Brasil
+    </h1>
+    </header>
     <main>
        <ul id="ul"></ul>
 
@@ -42,12 +46,17 @@
 
 
         const a = document.createElement("a");
-        a.setAttribute("href", './municipios/index.html');
+        a.setAttribute("href", `./municipios/index.html?UF=${element.sigla}`);
+
+        const botao = document.createElement("button");
+        botao.append("Favoritar");
+        botao.setAttribute("style", "color: #ff4136 ;")
 
 
         
         a.textContent = element.nome;
         li.appendChild(a);
+        li.appendChild(botao);
         ul.appendChild(li);
 
         
